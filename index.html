@@ -118,7 +118,7 @@
       <section>
         <div class="row">
   
-          <div class="col-sm-6 mb-3" v-for="item in filtersData[currentPage]">
+          <div class="col-sm-6 mb-3" v-for="(item,index) in filtersData[currentPage]" @click="targetInfo(index,item)">
             <div class="card shadow-sm border-0">
               <div class="card-header bg-cover" :style="{ backgroundImage: `url(${item.Picture1})`   }" style="height: 155px">
               </div>
@@ -149,6 +149,44 @@
                       <i class="fas fa-ticket-alt text-success"></i>
                     </div>
                     {{item.Ticketinfo}}</li> -->
+                    <li class="d-flex mt-2">
+                      <div class="text-center" style="width: 30px">
+                       
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                              點我介紹
+                            </button>
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">{{item.Name}}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="items">
+                                      <div class="img">
+                                        <div class="card-header bg-cover" :style="{ backgroundImage: `url(${item.Picture1})`   }" style="height: 155px"></div>
+                                      </div>
+                                      <div class="item">
+                                        <span>地點名稱:{{item.Name}}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                      </div> 
+                    </li>
                 </ul>
               </div>
             </div>
@@ -162,7 +200,7 @@
             <a class="page-link" href="#" tabindex="-1">Previous</a>
           </li> -->
 
-          <li class="page-item" v-for="page in filtersData.length">
+          <li class="page-item"  v-for="page in filtersData.length">
             <a class="page-link" href="#" @click="currentPage = page - 1" >{{page}}</a>
           </li>
          

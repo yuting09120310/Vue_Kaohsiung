@@ -4,7 +4,7 @@ var app = new Vue({
         title:'旅遊資訊網',
         data:[],
         currentPage:0,
-        type:"全部"
+        type:"全部",
     },
 
     mounted() {
@@ -48,13 +48,17 @@ var app = new Vue({
             })
             console.log(newData)
 
-            if (newData < 10){
-                return newData
-            }else{
-                return newData
-            }
-            
+            return newData
         },
+
+    },
+
+    methods: {
+
+        targetInfo: function(i,item) {
+            console.log(i)
+            console.log(item.Name)
+        }
 
     },
 
